@@ -3,7 +3,7 @@ package com.zestworks.woebotapplication
 import android.app.Application
 import com.zestworks.woebotapplication.repository.InMemCachedRepository
 import com.zestworks.woebotapplication.repository.Repository
-import com.zestworks.woebotapplication.ui.chatbot.BotViewModel
+import com.zestworks.woebotapplication.ui.chatbot.ChatBotViewModel
 import kotlinx.serialization.UnstableDefault
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
@@ -11,7 +11,7 @@ import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
 @UnstableDefault
-class WoebotApplication : Application() {
+class ChatBotApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -19,14 +19,14 @@ class WoebotApplication : Application() {
         val module = module {
             single<Repository> { InMemCachedRepository(get()) }
             viewModel {
-                BotViewModel(
+                ChatBotViewModel(
                     get()
                 )
             }
         }
 
         startKoin {
-            androidContext(this@WoebotApplication)
+            androidContext(this@ChatBotApplication)
             modules(module)
         }
     }
