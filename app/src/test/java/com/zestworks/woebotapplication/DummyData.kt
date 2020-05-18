@@ -21,3 +21,28 @@ val dummySuccessViewModel = WoeBotUIModel(
     buttons = listOf(Reply("Sure", "ZVQ", false), Reply("Later", "YMB", false))
 )
 
+val dummyReplyData = WoebotNetworkModel(
+    id = "ZVQ",
+    text = "Which of these is an example of all-or-nothing thinking?|1. My classmates don't like me|2. I wish I knew more people|3. I feel lonely sometimes",
+    replies = listOf(
+        "1",
+        "2",
+        "3",
+        "All or Nothing??"
+    ),
+    payloads = listOf(
+        "1",
+        "2",
+        "3",
+        "huh"
+    ),
+    routes = listOf(
+        "CWP",
+        "LIQ",
+        "LIQ",
+        "CFK"
+    ),
+    tag = "",
+    lesson = "allornothing"
+
+)

@@ -54,6 +54,7 @@ dependencies {
     testImplementation "io.mockk:mockk:1.10.0"
 
     testImplementation "android.arch.core:core-testing:1.1.1"
+    testImplementation 'io.kotest:kotest-property-jvm:4.0.1' // for kotest property test
 
 
 
