@@ -26,7 +26,7 @@ class BotRecyclerAdapter(var messages : List<Message>) :
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         val message = messages[position]
 
-        holder.botResponse.text = message.message
+        holder.botResponse.text = message.message.replace("|", "\n")
         holder.botResponse.textAlignment = when (message.align) {
             Align.TEXT_ALIGNMENT_TEXT_START -> TEXT_ALIGNMENT_TEXT_START
             Align.TEXT_ALIGNMENT_TEXT_END -> TEXT_ALIGNMENT_TEXT_END
