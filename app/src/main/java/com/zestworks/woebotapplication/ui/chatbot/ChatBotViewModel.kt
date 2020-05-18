@@ -15,7 +15,7 @@ class ChatBotViewModel(private val repository: Repository) : ViewModel() {
         if (_viewState.value == null) {
             when (val repositoryResponse = repository.getStartResponse()) {
                 is RepositoryResponse.Success -> {
-                    repositoryResponse.woebotNetworkModel.apply {
+                    repositoryResponse.chatBotNetworkModel.apply {
                         val text = text
                         val align =
                             Align.TEXT_ALIGNMENT_TEXT_START
@@ -80,16 +80,16 @@ class ChatBotViewModel(private val repository: Repository) : ViewModel() {
                             listOfMessages.addAll(messages)
                             listOfMessages.add(
                                 Message(
-                                    model.woebotNetworkModel.text,
+                                    model.chatBotNetworkModel.text,
                                     Align.TEXT_ALIGNMENT_TEXT_START
                                 )
                             )
-                            for (i in 0 until model.woebotNetworkModel.replies.count()) {
+                            for (i in 0 until model.chatBotNetworkModel.replies.count()) {
                                 replies.add(
                                     Reply(
-                                        model.woebotNetworkModel.replies[i],
-                                        model.woebotNetworkModel.routes[i],
-                                        model.woebotNetworkModel.isEnd()
+                                        model.chatBotNetworkModel.replies[i],
+                                        model.chatBotNetworkModel.routes[i],
+                                        model.chatBotNetworkModel.isEnd()
                                     )
                                 )
                             }
@@ -106,7 +106,7 @@ class ChatBotViewModel(private val repository: Repository) : ViewModel() {
                         Unit
                     }
                     is RepositoryResponse.Error -> {
-                        ViewState.Error(model.reason)
+                        _viewState.postValue(ViewState.Error(model.reason))
                     }
                 }
             }

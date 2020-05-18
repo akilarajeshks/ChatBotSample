@@ -7,9 +7,9 @@ import java.io.FileNotFoundException
 import java.io.IOException
 
 @UnstableDefault
-class InMemCachedRepository(private val application: Application) :
+class MemCachedRepository(private val application: Application) :
     Repository {
-    private val dataMap: HashMap<String, WoebotNetworkModel> = hashMapOf()
+    private val dataMap: HashMap<String, ChatBotNetworkModel> = hashMapOf()
     override fun getStartResponse(): RepositoryResponse {
         return try {
             if (dataMap.isEmpty()) {
@@ -43,7 +43,7 @@ class InMemCachedRepository(private val application: Application) :
         inputStream.close()
         String(buffer).let {
             Json.parseJson(it).jsonObject.values.forEach { jsonElement ->
-                val model = Json.fromJson(WoebotNetworkModel.serializer(), jsonElement)
+                val model = Json.fromJson(ChatBotNetworkModel.serializer(), jsonElement)
                 dataMap[model.id] = model
             }
         }
@@ -51,6 +51,6 @@ class InMemCachedRepository(private val application: Application) :
 }
 
 sealed class RepositoryResponse {
-    data class Success(val woebotNetworkModel: WoebotNetworkModel) : RepositoryResponse()
+    data class Success(val chatBotNetworkModel: ChatBotNetworkModel) : RepositoryResponse()
     data class Error(val reason: String) : RepositoryResponse()
 }

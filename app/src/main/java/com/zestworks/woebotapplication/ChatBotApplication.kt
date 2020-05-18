@@ -1,7 +1,7 @@
 package com.zestworks.woebotapplication
 
 import android.app.Application
-import com.zestworks.woebotapplication.repository.InMemCachedRepository
+import com.zestworks.woebotapplication.repository.MemCachedRepository
 import com.zestworks.woebotapplication.repository.Repository
 import com.zestworks.woebotapplication.ui.chatbot.ChatBotViewModel
 import kotlinx.serialization.UnstableDefault
@@ -17,7 +17,7 @@ class ChatBotApplication : Application() {
         super.onCreate()
 
         val module = module {
-            single<Repository> { InMemCachedRepository(get()) }
+            single<Repository> { MemCachedRepository(get()) }
             viewModel {
                 ChatBotViewModel(
                     get()

@@ -3,11 +3,11 @@ package com.zestworks.woebotapplication.repository
 import io.kotest.matchers.shouldBe
 import org.junit.Test
 
-class WoebotNetworkModelTest {
+class ChatBotNetworkModelTest {
 
     @Test
     fun isStart() {
-        val startModel = WoebotNetworkModel(
+        val startModel = ChatBotNetworkModel(
             id = "EIC",
             text = "Want to do a quick word game?",
             replies = listOf("Sure", "Later"),
@@ -18,7 +18,7 @@ class WoebotNetworkModelTest {
         )
 
 
-        val notStartModel = WoebotNetworkModel(
+        val notStartModel = ChatBotNetworkModel(
             id = "ZVQ",
             text = "Which of these is an example of all-or-nothing thinking?|1. My classmates don't like me|2. I wish I knew more people|3. I feel lonely sometimes",
             replies = listOf(
@@ -49,7 +49,7 @@ class WoebotNetworkModelTest {
 
     @Test
     fun isEnd() {
-        val endModel = WoebotNetworkModel(
+        val endModel = ChatBotNetworkModel(
             id = "OWQ",
             text = "chat to you later 👋",
             replies = listOf(
@@ -65,7 +65,7 @@ class WoebotNetworkModelTest {
             lesson = "allornothing"
         )
 
-        val notEndModel = WoebotNetworkModel(
+        val notEndModel = ChatBotNetworkModel(
             id = "ZVQ",
             text = "Which of these is an example of all-or-nothing thinking?|1. My classmates don't like me|2. I wish I knew more people|3. I feel lonely sometimes",
             replies = listOf(
